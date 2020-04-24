@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>BIG IP F5 :: Building Ideas</title>
+    <title>DMVPN with EASE  :: Building Ideas</title>
 
     
     <link href="/css/nucleus.css?1587748387" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/big-ip-f5/">
+  <body class="" data-url="/cisco/dmvpn/">
     <nav id="sidebar" class="">
 
 
@@ -96,7 +96,7 @@
     
     <li data-nav-id="/big-ip-f5/" title="BIG IP F5" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/big-ip-f5/">
@@ -150,7 +150,7 @@
   
     
     <li data-nav-id="/cisco/" title="CISCO" class="dd-item 
-        
+        parent
         
         
         ">
@@ -197,7 +197,7 @@
  
   
     
-      <li data-nav-id="/cisco/dmvpn/" title="DMVPN with EASE " class="dd-item ">
+      <li data-nav-id="/cisco/dmvpn/" title="DMVPN with EASE " class="dd-item active">
         <a href="/cisco/dmvpn/">
         DMVPN with EASE 
         
@@ -370,7 +370,13 @@
             
           
           
-            <a href='/'>Building Ideas</a> > BIG IP F5
+            
+            
+          
+          
+            <a href='/'>Building Ideas</a> > <a href='/cisco/'>CISCO</a> > DMVPN with EASE 
+          
+        
           
         
           
@@ -397,21 +403,59 @@
           
             <h1>
               
-              BIG IP F5
+              DMVPN with EASE 
             </h1>
           
 
         
 
 
+<p>DMVPN OVERVIEW</p>
+<p>DMVPN is a CISCO IOS Software Solution for building an easy,dynamic and scalable VPN solution with the help of NHRP, multipoint GRE, routing protocols like EIGRP,OSPF. DMVPN provides full meshed connectivity with simple configuration of HUB and SPOKE. DMVPN itself is not a protocol to be noted its just a design. A static GRE tunnel between HUB and SPOKE is always possible where we do have create multiple tunnels for each SPOKE we add . This may be a very useful solution for a small scale, it easily grows unwieldy as spokes multiply in number.</p>
+<p>COMPONENTS of DMVPN</p>
+<p>NHRP</p>
+<p>mGRE</p>
+<p>ROUTING PROTOCOLS</p>
+<p>DMVPN PHASE I</p>
+<pre><code>HUB#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+HUB(config)#interface Tunnel1
+HUB(config-if)# ip address 172.16.1.254 255.255.255.0
+HUB(config-if)# no ip redirects
+HUB(config-if)# ip mtu 1400
+HUB(config-if)# no ip next-hop-self eigrp 123
+HUB(config-if)# no ip split-horizon eigrp 123
+HUB(config-if)# ip nhrp authentication cisco123
+HUB(config-if)# ip nhrp map multicast dynamic
+HUB(config-if)# ip nhrp network-id 123
+HUB(config-if)# ip tcp adjust-mss 1360
+HUB(config-if)# tunnel source FastEthernet4
+HUB(config-if)# tunnel mode gre multipoint
+HUB(config-if)# tunnel key 1234
+HUB(config-if)# tunnel protection ipsec profile dmvpn
+HUB(config-if)#end
+HUB#
+</code></pre><p>DMVPN PHASE II</p>
+<p>We will now need to only add few commands from the above configured commands  for moving onto the DMVPN PHASE II .</p>
+<p>HUB # int tun0</p>
+<pre><code>      #tunnel mode gre multipoint    (Mandatory)  (Required in case of DMVPN II and DMVPN III)
 
-	<p>hello this is test f5</p>
+      #no ip next-hop self eigrp 123
+</code></pre>
+<p>SPOKE 1 # int tun0</p>
+<pre><code>       #tunnel mode gre multipoint    (Mandatory)  (Required in case of DMVPN II and DMVPN III)
+</code></pre>
+<p>SPOKE 2 # int tun0</p>
+<pre><code>       #tunnel mode gre multipoint    (Mandatory)  (Required in case of DMVPN II and DMVPN III)
+</code></pre>
+<p>DMVPN PHASE III</p>
+<p>No NHRP Resolution request</p>
+<p>HUB # ip nhrp redirect</p>
+<p>SPOKE 1 # ip nhrp shortcut</p>
+<p>SPOKE 2 # ip nhrp shortcut</p>
 
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -446,6 +490,41 @@
             
                 
                     
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                     
                 
                 
@@ -474,42 +553,11 @@
             
         
                     
-            
-        
-                    
                         
             
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -529,6 +577,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -598,10 +649,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/" title="Building Ideas"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/cisco/reload/" title="Cisco-R1# reload in/at  A Life Saver ! "> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/big-ip-f5/snat/" title="SNAT and Auto Map" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/juniper/" title="JUNIPER" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -631,3 +682,4 @@
 
   </body>
 </html>
+

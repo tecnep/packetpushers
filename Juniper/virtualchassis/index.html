@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>BIG IP F5 :: Building Ideas</title>
+    <title>Virtual Chassis :: Building Ideas</title>
 
     
     <link href="/css/nucleus.css?1587748387" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/big-ip-f5/">
+  <body class="" data-url="/juniper/virtualchassis/">
     <nav id="sidebar" class="">
 
 
@@ -96,7 +96,7 @@
     
     <li data-nav-id="/big-ip-f5/" title="BIG IP F5" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/big-ip-f5/">
@@ -226,7 +226,7 @@
   
     
     <li data-nav-id="/juniper/" title="JUNIPER" class="dd-item 
-        
+        parent
         
         
         ">
@@ -252,7 +252,7 @@
  
   
     
-      <li data-nav-id="/juniper/virtualchassis/" title="Virtual Chassis" class="dd-item ">
+      <li data-nav-id="/juniper/virtualchassis/" title="Virtual Chassis" class="dd-item active">
         <a href="/juniper/virtualchassis/">
         Virtual Chassis
         
@@ -370,7 +370,13 @@
             
           
           
-            <a href='/'>Building Ideas</a> > BIG IP F5
+            
+            
+          
+          
+            <a href='/'>Building Ideas</a> > <a href='/juniper/'>JUNIPER</a> > Virtual Chassis
+          
+        
           
         
           
@@ -381,7 +387,16 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#preprovisioned-configuration">PREPROVISIONED CONFIGURATION</a></li>
+        <li><a href="#verification">VERIFICATION</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -397,21 +412,97 @@
           
             <h1>
               
-              BIG IP F5
+              Virtual Chassis
             </h1>
           
 
         
 
 
+<p>Juniper has always been an technology that I have always liked right from the beginning of my career when I was working as an Jr Network Administrator. The logical command as well as the hierarchy based Juniper devices has always made me love the device.</p>
+<p>Let me today talk about a very useful and an interesting topic which we usually called stack in the world of Cisco and virtual chassis in the world of Juniper, both of them mean the same thing logically make two or more than two switch as a one and configure and manage the device as a single unity. High Availability, managed configuration and maintenance are few of the benefits that a virtual chassis can provide. The configuration for virtual chassis can be found easily in the juniper sites but my objective about writing this is making it more simpler in context to Juniper&rsquo;s document.</p>
+<p>There are basically two ways of configuring virtual chassis in Juniper.</p>
+<blockquote>
+<p>Nonprovisioned configuration : The master switch assigns a priority value and the role is determined by the mastership priority value.</p>
+</blockquote>
+<blockquote>
+<p>Preprovisioned configuration : The role is determined by the serial number of the corresponding devices.
+I will be configuring it in two EX 3400 switches in this particular blog.</p>
+</blockquote>
+<p><img src="/Juniper/virtual-chassis.jpg" alt="Example image"></p>
+<h3 id="preprovisioned-configuration">PREPROVISIONED CONFIGURATION</h3>
+<p>We simply need to power on of the first switch and the first thing we need to decide is whether we will be using the dedicated virtual chassis port or Juniper also offers us the privilege of using the uplink port available. In this particular example I had used the SFP + uplink ports which will require and additional configuration. The uplink port will now be needing to convert it to the virtual chassis port.</p>
+<pre><code>root@lab-ex3400&gt;  request virtual-chassis vc-port set pic-slot 2 port 0
+</code></pre><p>In my case I was using the pic slot 2 and the port being 0. After using this command we have enabled the port to be used as a virtual chassis port.</p>
+<pre><code>root@lab-ex3400&gt; show chassis hardware
+Hardware inventory:
+Item             Version  Part number  Serial number     Description
+Chassis                                NX0219270070      Virtual Chassis
+Routing Engine 0          BUILTIN      BUILTIN           RE-EX3400-48T
+Routing Engine 1          BUILTIN      BUILTIN           RE-EX3400-48T
+FPC 0            REV 25   650-059881   NX0219270070      EX3400-48T
+  CPU                     BUILTIN      BUILTIN           FPC CPU
+  PIC 0          REV 25   BUILTIN      BUILTIN           48x10/100/1000 Base-T
+  PIC 1          REV 25   650-059881   NX0219270070      2x40G QSFP
+  PIC 2          REV 25   650-059881   NX0219270070      4x10G SFP/SFP+
+    Xcvr 3                NON-JNPR     CMD9K000087       SFP+-10G-SR
+  Power Supply 0 REV 05   640-060603   1EDV9190NFT       JPSU-150W-AC-AFO
+  Fan Tray 0                                             Fan Module, Airflow Out (AFO)
+  Fan Tray 1                                             Fan Module, Airflow Out (AFO)
+</code></pre><p>In this particular blog we will be using the preprovisioned mode so we will need to specify it.</p>
+<pre><code>{master:0}[edit]
+root@lab-ex3400# set virtual-chassis preprovisioned
+{master:0}[edit]
 
-	<p>hello this is test f5</p>
+root@lab-ex3400# set virtual-chassis no-split-detection
+</code></pre><p>Specify all the members that you want included in the Virtual Chassis, listing each switch’s serial number with the desired member ID and role.</p>
+<pre><code>{master:0}[edit]
+root@lab-ex3400# set virtual-chassis member 0 role routing-engine serial-number NX0219270207
+
+{master:0}[edit]
+root@lab-ex3400# set virtual-chassis member 0 role routing-engine serial-number NX0219270207
+</code></pre><h3 id="verification">VERIFICATION</h3>
+<pre><code>master:0}[edit virtual-chassis]
+root@lab-ex3400# show
+preprovisioned;
+no-split-detection;
+member 0 {
+    role routing-engine;
+    serial-number NX0219270207;
+}
+member 1 {
+    role line-card;
+    serial-number NX0219270070;
+</code></pre><p>We will need to now power on the second device and the first we need to do is convert the uplink port to the virtual chassis port using the command.</p>
+<pre><code>root@lab-ex3400&gt;  request virtual-chassis vc-port set pic-slot 2 port 0
+</code></pre><p>After the conversion we will now need to plug in the SFP and the cable to the other switch participating in virtual chassis. We can also verify the virtual chassis port.</p>
+<pre><code>{master:0}
+root@lab-ex3400&gt; show virtual-chassis vc-port
+fpc0:
+--------------------------------------------------------------------------
+Interface   Type              Trunk  Status       Speed        Neighbor
+or                             ID                 (mbps)       ID  Interface
+PIC / Port
+2/3         Configured         -1    Up           10000        1   vcp-255/2/3
+1/1         Configured               Absent
+1/0         Configured               Absent
+</code></pre><p>Note : The uplink port may not come up for a while and may take anywhere from around 1-2 minutes.</p>
+<p>Both the switch must participate in the virtual chassis. We can now verify it.</p>
+<pre><code>{master:0}
+root@lab-ex3400&gt; show virtual-chassis status
+
+Preprovisioned Virtual Chassis
+Virtual Chassis ID: 2cac.987c.7696
+Virtual Chassis Mode: Enabled
+                                                Mstr           Mixed Route Neighbor List
+Member ID  Status   Serial No    Model          prio  Role      Mode  Mode ID  Interface
+0 (FPC 0)  Prsnt    NX0219270207 ex3400-48t     129   Master*      N  VC
+1 (FPC 1)  Prsnt    NX0219270070 ex3400-48t       0   Linecard     N  VC   0  vcp-255/2/3
+
+</code></pre><p>Thank you for reading my blog and will be writing more about Juniper devices in the near future.</p>
 
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -446,20 +537,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -470,41 +547,6 @@
                     
                     
 
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -554,6 +596,22 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -561,6 +619,43 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -598,10 +693,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/" title="Building Ideas"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/juniper/" title="JUNIPER"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/big-ip-f5/snat/" title="SNAT and Auto Map" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/virtualization/" title="Virtualization" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -631,3 +726,4 @@
 
   </body>
 </html>
+
