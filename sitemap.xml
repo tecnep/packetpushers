@@ -3,7 +3,18 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://example.org/big-ip-f5/</loc>
+    <lastmod>2020-04-22T20:39:58+05:45</lastmod>
+  </url>
+  
+  <url>
     <loc>http://example.org/</loc>
+    <lastmod>2020-04-22T20:39:58+05:45</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/big-ip-f5/snat/</loc>
+    <lastmod>2020-04-22T20:39:58+05:45</lastmod>
   </url>
   
   <url>
