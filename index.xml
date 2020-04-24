@@ -31,16 +31,6 @@ DMVPN is a CISCO IOS Software Solution for building an easy,dynamic and scalable
     </item>
     
     <item>
-      <title>JUNIPER-VC </title>
-      <link>http://simona.com.np/sushant/juniper/</link>
-      <pubDate>Wed, 22 Apr 2020 20:39:58 +0545</pubDate>
-      
-      <guid>http://simona.com.np/sushant/juniper/</guid>
-      <description>Juniper has always been an technology that I have always liked right from the beginning of my career when I was working as an Jr Network Administrator. The logical command as well as the hierarchy based Juniper devices has always made me love the device.
-Let me today talk about a very useful and an interesting topic which we usually called stack in the world of Cisco and virtual chassis in the world of Juniper, both of them mean the same thing logically make two or more than two switch as a one and configure and manage the device as a single unity.</description>
-    </item>
-    
-    <item>
       <title>SNAT and Auto Map</title>
       <link>http://simona.com.np/big-ip-f5/snat/</link>
       <pubDate>Wed, 22 Apr 2020 20:39:58 +0545</pubDate>
@@ -50,11 +40,11 @@ Let me today talk about a very useful and an interesting topic which we usually 
     </item>
     
     <item>
-      <title>Virtual Chassis</title>
-      <link>http://simona.com.np/juniper/virtualchassis/</link>
+      <title>Virtual Chassis </title>
+      <link>http://simona.com.np/junipe/vc/</link>
       <pubDate>Wed, 22 Apr 2020 20:39:58 +0545</pubDate>
       
-      <guid>http://simona.com.np/juniper/virtualchassis/</guid>
+      <guid>http://simona.com.np/junipe/vc/</guid>
       <description>Juniper has always been an technology that I have always liked right from the beginning of my career when I was working as an Jr Network Administrator. The logical command as well as the hierarchy based Juniper devices has always made me love the device.
 Let me today talk about a very useful and an interesting topic which we usually called stack in the world of Cisco and virtual chassis in the world of Juniper, both of them mean the same thing logically make two or more than two switch as a one and configure and manage the device as a single unity.</description>
     </item>
