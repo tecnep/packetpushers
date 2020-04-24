@@ -29,5 +29,24 @@
       <description>This is going to be my first blog in the technology that I am starting to love pretty much. Yes, as my topic suggests we are going to talk about an technology which all the time used to come in my mind as a loadbalancer but finally I started stating it as a Application Delivery Controller which it really is . Big IP F5 has become one of the hot topics over the years that provides intelligent traffic management, high availability of your critical applications, security, optimization and many more things.</description>
     </item>
     
+    <item>
+      <title>TYPE 1 VS TYPE 2 HYPERVISOR</title>
+      <link>http://example.org/virtualization/types/</link>
+      <pubDate>Wed, 22 Apr 2020 20:39:58 +0545</pubDate>
+      
+      <guid>http://example.org/virtualization/types/</guid>
+      <description>TWO TYPES OF HYPERVISOR</description>
+    </item>
+    
+    <item>
+      <title>Virtual Chassis</title>
+      <link>http://example.org/juniper/virtual-chassis/</link>
+      <pubDate>Wed, 22 Apr 2020 20:39:58 +0545</pubDate>
+      
+      <guid>http://example.org/juniper/virtual-chassis/</guid>
+      <description>Juniper has always been an technology that I have always liked right from the beginning of my career when I was working as an Jr Network Administrator. The logical command as well as the hierarchy based Juniper devices has always made me love the device.
+Let me today talk about a very useful and an interesting topic which we usually called stack in the world of Cisco and virtual chassis in the world of Juniper, both of them mean the same thing logically make two or more than two switch as a one and configure and manage the device as a single unity.</description>
+    </item>
+    
   </channel>
 </rss>
