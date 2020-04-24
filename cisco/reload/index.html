@@ -12,19 +12,19 @@
     <title>Cisco-R1# reload in/at  A Life Saver !  :: Building Ideas</title>
 
     
-    <link href="/css/nucleus.css?1587753712" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1587753712" rel="stylesheet">
-    <link href="/css/hybrid.css?1587753712" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1587753712" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1587753712" rel="stylesheet">
-    <link href="/css/auto-complete.css?1587753712" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1587753712" rel="stylesheet">
-    <link href="/css/theme.css?1587753712" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1587753712" rel="stylesheet">
+    <link href="/css/nucleus.css?1587754595" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1587754595" rel="stylesheet">
+    <link href="/css/hybrid.css?1587754595" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1587754595" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1587754595" rel="stylesheet">
+    <link href="/css/auto-complete.css?1587754595" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1587754595" rel="stylesheet">
+    <link href="/css/theme.css?1587754595" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1587754595" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1587753712"></script>
+    <script src="/js/jquery-3.3.1.min.js?1587754595"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -69,14 +69,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1587753712"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1587753712"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1587754595"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1587754595"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/simona.com.np\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1587753712"></script>
+<script type="text/javascript" src="/js/search.js?1587754595"></script>
 
     
   </div>
@@ -94,13 +94,13 @@
  
   
     
-    <li data-nav-id="/big-ip-f5/" title="BIG IP F5" class="dd-item 
+    <li data-nav-id="/big-ip-f5/" title="Big IP F5" class="dd-item 
         
         
         
         ">
       <a href="/big-ip-f5/">
-          BIG IP F5
+          Big IP F5
           
       </a>
       
@@ -149,13 +149,13 @@
  
   
     
-    <li data-nav-id="/cisco/" title="CISCO" class="dd-item 
+    <li data-nav-id="/cisco/" title="Cisco" class="dd-item 
         parent
         
         
         ">
       <a href="/cisco/">
-          CISCO
+          Cisco
           
       </a>
       
@@ -225,13 +225,13 @@
  
   
     
-    <li data-nav-id="/junipe/" title="JUNIPER " class="dd-item 
+    <li data-nav-id="/junipe/" title="Juniper " class="dd-item 
         
         
         
         ">
       <a href="/junipe/">
-          JUNIPER 
+          Juniper 
           
       </a>
       
@@ -330,7 +330,7 @@
             
           
           
-            <a href='/'>Building Ideas</a> > <a href='/cisco/'>CISCO</a> > Cisco-R1# reload in/at  A Life Saver ! 
+            <a href='/'>HOME PAGE </a> > <a href='/cisco/'>Cisco</a> > Cisco-R1# reload in/at  A Life Saver ! 
           
         
           
@@ -366,17 +366,21 @@
         
 
 
-<p>We are well aware of how tricky can our life get when we are making some changes into our network device configuration and suddenly the ssh access gets disconnected , which can be more interesting if the device is remote . We will  either need to reboot the device physically going to the location  to gain our old configuration  or be very precise by using this life saver command in Cisco devices which I will be discussing about. This mechanism provides a safeguard against inadvertent loss of connectivity between a network device and the user or management application due to configuration changes.</p>
+<p>We are well aware of how tricky can our life get when we are making some changes into our network device configuration and suddenly the ssh access gets disconnected , which can be more interesting if the device is in the Data Centre . We will  either need to reboot the device physically going to the location  to gain our old configuration  or be very precise by using this life saver command in Cisco devices which I will be discussing about. This mechanism provides a safeguard against inadvertent loss of connectivity between a network device and the user or management application due to configuration changes.</p>
 <p>Scheduling a reboot prior to the configuration changes can actually be a life saver for lot of administrators around. So, if I make any errors while configuring the device and loose connectivity the device will automatically reboot after the certain set remaining time and  load back my old configuration from which I will be able to access back to my device.  Reload command in Cisco device permits a schedule reboot by making use of  &ldquo;in&rdquo; and &ldquo;at&rdquo;.</p>
-<p>at : at a specific time/date.
-in : after a certain time interval.
-Let me first talk about how we can make use of the &ldquo;at&rdquo;</p>
+<blockquote>
+<p>at : at a specific time/date.</p>
+</blockquote>
+<blockquote>
+<p>in : after a certain time interval.</p>
+</blockquote>
+<p>Let me first talk about how we can make use of the &ldquo;<strong>at</strong>&rdquo;</p>
 <pre><code>R1#reload at 03:00 10 may
 Reload scheduled for 03:00:00 UTC Sun May 10 2020 (in 411 hours and 33 minutes) by sushant on vty2 (27.34.20.120)
 Reload reason: Reload Command
 Proceed with reload? [confirm]
-</code></pre><p>You can well have a look at my above snapshot where I have used &ldquo;at&rdquo; mentioning the specific date and time interval.  Once i confirm the time and date my router will get rebooted at that specific date and time.</p>
-<p>The more interesting out of two is the use of &lsquo;in&rsquo; which I use it most of the time while making some major configuration changes in Cisco device remotely. The &lsquo;in&rsquo; will reload the device after a certain time interval.</p>
+</code></pre><p>You can well have a look at my above snapshot where I have used &ldquo;<strong>at</strong>&rdquo; mentioning the specific date and time interval.  Once i confirm the time and date my router will get rebooted at that specific date and time.</p>
+<p>The more interesting out of two is the use of &lsquo;<strong>in</strong>&rsquo; which I use it most of the time while making some major configuration changes in Cisco device remotely. The &ldquo;<strong>in</strong>&rdquo; will reload the device after a certain time interval.</p>
 <pre><code>R1#reload in 20
 Reload scheduled for 23:48:33 UTC Wed Apr 22 2020 (in 20 minutes) by sushant on vty2 (27.34.20.120)
 Reload reason: Reload Command
@@ -556,7 +560,7 @@ R1#
 	 
 	 
 		
-			<a class="nav nav-prev" href="/cisco/" title="CISCO"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/cisco/" title="Cisco"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/cisco/dmvpn/" title="DMVPN with EASE " style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -569,19 +573,19 @@ R1#
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1587753712"></script>
-    <script src="/js/perfect-scrollbar.min.js?1587753712"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1587753712"></script>
-    <script src="/js/jquery.sticky.js?1587753712"></script>
-    <script src="/js/featherlight.min.js?1587753712"></script>
-    <script src="/js/highlight.pack.js?1587753712"></script>
+    <script src="/js/clipboard.min.js?1587754595"></script>
+    <script src="/js/perfect-scrollbar.min.js?1587754595"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1587754595"></script>
+    <script src="/js/jquery.sticky.js?1587754595"></script>
+    <script src="/js/featherlight.min.js?1587754595"></script>
+    <script src="/js/highlight.pack.js?1587754595"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1587753712"></script>
-    <script src="/js/learn.js?1587753712"></script>
-    <script src="/js/hugo-learn.js?1587753712"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1587754595"></script>
+    <script src="/js/learn.js?1587754595"></script>
+    <script src="/js/hugo-learn.js?1587754595"></script>
 
-    <link href="/mermaid/mermaid.css?1587753712" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1587753712"></script>
+    <link href="/mermaid/mermaid.css?1587754595" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1587754595"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

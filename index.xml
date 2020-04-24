@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Building Ideas</title>
+    <title>HOME PAGE  on Building Ideas</title>
     <link>http://simona.com.np/</link>
-    <description>Recent content on Building Ideas</description>
+    <description>Recent content in HOME PAGE  on Building Ideas</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 22 Apr 2020 20:39:58 +0545</lastBuildDate>
@@ -17,7 +17,7 @@
       <pubDate>Wed, 22 Apr 2020 20:39:58 +0545</pubDate>
       
       <guid>http://simona.com.np/cisco/reload/</guid>
-      <description>We are well aware of how tricky can our life get when we are making some changes into our network device configuration and suddenly the ssh access gets disconnected , which can be more interesting if the device is remote . We will either need to reboot the device physically going to the location to gain our old configuration or be very precise by using this life saver command in Cisco devices which I will be discussing about.</description>
+      <description>We are well aware of how tricky can our life get when we are making some changes into our network device configuration and suddenly the ssh access gets disconnected , which can be more interesting if the device is in the Data Centre . We will either need to reboot the device physically going to the location to gain our old configuration or be very precise by using this life saver command in Cisco devices which I will be discussing about.</description>
     </item>
     
     <item>

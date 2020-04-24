@@ -8,11 +8,6 @@
   </url>
   
   <url>
-    <loc>http://simona.com.np/</loc>
-    <lastmod>2020-04-22T20:39:58+05:45</lastmod>
-  </url>
-  
-  <url>
     <loc>http://simona.com.np/cisco/</loc>
     <lastmod>2020-04-22T20:39:58+05:45</lastmod>
   </url>
@@ -24,6 +19,11 @@
   
   <url>
     <loc>http://simona.com.np/cisco/dmvpn/</loc>
+    <lastmod>2020-04-22T20:39:58+05:45</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://simona.com.np/</loc>
     <lastmod>2020-04-22T20:39:58+05:45</lastmod>
   </url>
   
