@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DMVPN with EASE  on Building Ideas</title>
+    <link>http://example.org/sushant/</link>
+    <description>Recent content in DMVPN with EASE  on Building Ideas</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Apr 2020 20:39:58 +0545</lastBuildDate>
+    
+	<atom:link href="http://example.org/sushant/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DMVPN with EASE </title>
+      <link>http://example.org/sushant/juniper/</link>
+      <pubDate>Wed, 22 Apr 2020 20:39:58 +0545</pubDate>
+      
+      <guid>http://example.org/sushant/juniper/</guid>
+      <description>Juniper has always been an technology that I have always liked right from the beginning of my career when I was working as an Jr Network Administrator. The logical command as well as the hierarchy based Juniper devices has always made me love the device.
+Let me today talk about a very useful and an interesting topic which we usually called stack in the world of Cisco and virtual chassis in the world of Juniper, both of them mean the same thing logically make two or more than two switch as a one and configure and manage the device as a single unity.</description>
+    </item>
+    
+  </channel>
+</rss>
