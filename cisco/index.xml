@@ -11,5 +11,14 @@
 	<atom:link href="http://example.org/cisco/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Cisco-R1# reload in/at  A Life Saver ! </title>
+      <link>http://example.org/cisco/reload/</link>
+      <pubDate>Wed, 22 Apr 2020 20:39:58 +0545</pubDate>
+      
+      <guid>http://example.org/cisco/reload/</guid>
+      <description>We are well aware of how tricky can our life get when we are making some changes into our network device configuration and suddenly the ssh access gets disconnected , which can be more interesting if the device is remote . We will either need to reboot the device physically going to the location to gain our old configuration or be very precise by using this life saver command in Cisco devices which I will be discussing about.</description>
+    </item>
+    
   </channel>
 </rss>

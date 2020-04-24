@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>JUNIPER :: Building Ideas</title>
+    <title>Cisco-R1# reload in/at  A Life Saver !  :: Building Ideas</title>
 
     
     <link href="/css/nucleus.css?1587746436" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/juniper/">
+  <body class="" data-url="/cisco/reload/">
     <nav id="sidebar" class="">
 
 
@@ -150,7 +150,7 @@
   
     
     <li data-nav-id="/cisco/" title="CISCO" class="dd-item 
-        
+        parent
         
         
         ">
@@ -176,7 +176,7 @@
  
   
     
-      <li data-nav-id="/cisco/reload/" title="Cisco-R1# reload in/at  A Life Saver ! " class="dd-item ">
+      <li data-nav-id="/cisco/reload/" title="Cisco-R1# reload in/at  A Life Saver ! " class="dd-item active">
         <a href="/cisco/reload/">
         Cisco-R1# reload in/at  A Life Saver ! 
         
@@ -206,7 +206,7 @@
     
     <li data-nav-id="/juniper/" title="JUNIPER" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/juniper/">
@@ -263,7 +263,13 @@
             
           
           
-            <a href='/'>Building Ideas</a> > JUNIPER
+            
+            
+          
+          
+            <a href='/'>Building Ideas</a> > <a href='/cisco/'>CISCO</a> > Cisco-R1# reload in/at  A Life Saver ! 
+          
+        
           
         
           
@@ -290,21 +296,45 @@
           
             <h1>
               
-              JUNIPER
+              Cisco-R1# reload in/at  A Life Saver ! 
             </h1>
           
 
         
 
 
+<p>We are well aware of how tricky can our life get when we are making some changes into our network device configuration and suddenly the ssh access gets disconnected , which can be more interesting if the device is remote . We will  either need to reboot the device physically going to the location  to gain our old configuration  or be very precise by using this life saver command in Cisco devices which I will be discussing about. This mechanism provides a safeguard against inadvertent loss of connectivity between a network device and the user or management application due to configuration changes.</p>
+<p>Scheduling a reboot prior to the configuration changes can actually be a life saver for lot of administrators around. So, if I make any errors while configuring the device and loose connectivity the device will automatically reboot after the certain set remaining time and  load back my old configuration from which I will be able to access back to my device.  Reload command in Cisco device permits a schedule reboot by making use of  &ldquo;in&rdquo; and &ldquo;at&rdquo;.</p>
+<p>at : at a specific time/date.
+in : after a certain time interval.
+Let me first talk about how we can make use of the &ldquo;at&rdquo;</p>
+<pre><code>R1#reload at 03:00 10 may
+Reload scheduled for 03:00:00 UTC Sun May 10 2020 (in 411 hours and 33 minutes) by sushant on vty2 (27.34.20.120)
+Reload reason: Reload Command
+Proceed with reload? [confirm]
+</code></pre><p>You can well have a look at my above snapshot where I have used &ldquo;at&rdquo; mentioning the specific date and time interval.  Once i confirm the time and date my router will get rebooted at that specific date and time.</p>
+<p>The more interesting out of two is the use of &lsquo;in&rsquo; which I use it most of the time while making some major configuration changes in Cisco device remotely. The &lsquo;in&rsquo; will reload the device after a certain time interval.</p>
+<pre><code>R1#reload in 20
+Reload scheduled for 23:48:33 UTC Wed Apr 22 2020 (in 20 minutes) by sushant on vty2 (27.34.20.120)
+Reload reason: Reload Command
+Proceed with reload? [confirm]
+</code></pre><p>The time to get reloaded can also be verified by making use of the command &lsquo;show reload&rsquo;</p>
+<pre><code>R1#show reload
+Reload scheduled for 23:48:34 UTC Wed Apr 22 2020 (in 19 minutes) by sushant on vty2 (27.34.20.120)
+Reload reason: Reload Command
+</code></pre><p>The reload scheduled set can also be aborted .</p>
+<pre><code>R1#reload cancel
+R1#
 
-	<p>THIS IS JUNIPER test</p>
+
+***
+*** --- SHUTDOWN ABORTED ---
+***
+
+</code></pre><p>There are other technique as well which I will be discussing about in my other blogs. Thank you for reading it out. Feedbacks will be well appreciated !</p>
 
 
-
-
-
-<footer class=" footline" >
+<footer class="footline">
 	
 </footer>
 
@@ -374,6 +404,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -386,6 +417,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -406,6 +438,8 @@
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -427,10 +461,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/cisco/reload/" title="Cisco-R1# reload in/at  A Life Saver ! "> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/cisco/" title="CISCO"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/big-ip-f5/" title="BIG IP F5" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/juniper/" title="JUNIPER" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -460,3 +494,4 @@
 
   </body>
 </html>
+
