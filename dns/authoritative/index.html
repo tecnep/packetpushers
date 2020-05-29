@@ -12,19 +12,19 @@
     <title>Authoritative Vs Non-Authoritative  :: Building Ideas</title>
 
     
-    <link href="/css/nucleus.css?1590787651" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1590787651" rel="stylesheet">
-    <link href="/css/hybrid.css?1590787651" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1590787651" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1590787651" rel="stylesheet">
-    <link href="/css/auto-complete.css?1590787651" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1590787651" rel="stylesheet">
-    <link href="/css/theme.css?1590787651" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1590787651" rel="stylesheet">
+    <link href="/css/nucleus.css?1590788092" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1590788092" rel="stylesheet">
+    <link href="/css/hybrid.css?1590788092" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1590788092" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1590788092" rel="stylesheet">
+    <link href="/css/auto-complete.css?1590788092" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1590788092" rel="stylesheet">
+    <link href="/css/theme.css?1590788092" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1590788092" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1590787651"></script>
+    <script src="/js/jquery-3.3.1.min.js?1590788092"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -69,14 +69,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1590787651"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1590787651"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1590788092"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1590788092"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/simona.com.np\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1590787651"></script>
+<script type="text/javascript" src="/js/search.js?1590788092"></script>
 
     
   </div>
@@ -424,12 +424,12 @@
 <p><strong>What is Non-Authoritative DNS ?</strong></p>
 <p>Simply stating non-authoritative DNS does not contain the original files of the namespace zone. They usually have cache for that particular domain which is usually generated from previous iterative query done towards Root, TLD and then to the authoritative nameserver .If a DNS server responded for a DNS query which doesn’t have its original file information it is known as a Non-authoritative answer.</p>
 <p>Let&rsquo;s have a look at a simple packet capture to help it understand better.</p>
-<p><img src="/DNS/non-auth.PNG" alt="DNS Image"></p>
+<p><img src="/DNS/non-auth.png" alt="DNS Image"></p>
 <p>As you can clear see above my ip being 192.168.1.93 is querying  for resolver1.opendns.com and it is querying to get the IP for facebook.com. The resolver checks into its cache and send me the result and under response packet we can clearly see it indicating Authority RRs : 0 which means resolver1.opendns.com does not contain the file information for the domain facebook.com and is non-authoritative DNS.</p>
 <p><strong>What is Authoritative DNS ?</strong></p>
 <p>The authoritative nameserver contains information specific to the domain name it serves (e.g. google.com) and it can provide a recursive resolver with the IP address of that server found in the DNS A record, or if the domain has a CNAME record (alias) .Simply, authoritative DNS servers are responsible for the IP “mapping” of the intended website. They have the file information for that particular namespace.</p>
 <p>Let me capture a file and show you guys.
-<img src="/DNS/auth-dns.PNG" alt="DNS Image"></p>
+<img src="/DNS/auth-dns.png" alt="DNS Image"></p>
 <p>In the above capture 10.11.14.207 is making a query for test.example.com which we can see in the first packet and the reply we get is from 10.11.14.210 which has the Resource Record for the domain test.example.com . We directly get a reply from the authoritative DNS in this case and the indication has clearly made by wireshark with marking Authority RR as  1.</p>
 <p>This can also be found out using nslookup in windows and similar command like dig in linux.</p>
 
@@ -638,19 +638,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1590787651"></script>
-    <script src="/js/perfect-scrollbar.min.js?1590787651"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1590787651"></script>
-    <script src="/js/jquery.sticky.js?1590787651"></script>
-    <script src="/js/featherlight.min.js?1590787651"></script>
-    <script src="/js/highlight.pack.js?1590787651"></script>
+    <script src="/js/clipboard.min.js?1590788092"></script>
+    <script src="/js/perfect-scrollbar.min.js?1590788092"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1590788092"></script>
+    <script src="/js/jquery.sticky.js?1590788092"></script>
+    <script src="/js/featherlight.min.js?1590788092"></script>
+    <script src="/js/highlight.pack.js?1590788092"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1590787651"></script>
-    <script src="/js/learn.js?1590787651"></script>
-    <script src="/js/hugo-learn.js?1590787651"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1590788092"></script>
+    <script src="/js/learn.js?1590788092"></script>
+    <script src="/js/hugo-learn.js?1590788092"></script>
 
-    <link href="/mermaid/mermaid.css?1590787651" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1590787651"></script>
+    <link href="/mermaid/mermaid.css?1590788092" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1590788092"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
