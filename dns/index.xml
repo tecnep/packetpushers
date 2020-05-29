@@ -11,5 +11,16 @@
 	<atom:link href="http://simona.com.np/dns/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Authoritative Vs Non-Authoritative </title>
+      <link>http://simona.com.np/dns/authoritative/</link>
+      <pubDate>Wed, 22 Apr 2020 20:39:58 +0545</pubDate>
+      
+      <guid>http://simona.com.np/dns/authoritative/</guid>
+      <description>What is Non-Authoritative DNS ?
+Simply stating non-authoritative DNS does not contain the original files of the namespace zone. They usually have cache for that particular domain which is usually generated from previous iterative query done towards Root, TLD and then to the authoritative nameserver .If a DNS server responded for a DNS query which doesn’t have its original file information it is known as a Non-authoritative answer.
+Let&amp;rsquo;s have a look at a simple packet capture to help it understand better.</description>
+    </item>
+    
   </channel>
 </rss>

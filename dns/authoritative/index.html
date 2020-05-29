@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>OSPF Adjacency State  :: Building Ideas</title>
+    <title>Authoritative Vs Non-Authoritative  :: Building Ideas</title>
 
     
     <link href="/css/nucleus.css?1590787613" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/cisco/ospf-adjacency-state/">
+  <body class="" data-url="/dns/authoritative/">
     <nav id="sidebar" class="">
 
 
@@ -150,7 +150,7 @@
   
     
     <li data-nav-id="/cisco/" title="Cisco" class="dd-item 
-        parent
+        
         
         
         ">
@@ -197,7 +197,7 @@
  
   
     
-      <li data-nav-id="/cisco/ospf-adjacency-state/" title="OSPF Adjacency State " class="dd-item active">
+      <li data-nav-id="/cisco/ospf-adjacency-state/" title="OSPF Adjacency State " class="dd-item ">
         <a href="/cisco/ospf-adjacency-state/">
         OSPF Adjacency State 
         
@@ -226,7 +226,7 @@
   
     
     <li data-nav-id="/dns/" title="DNS" class="dd-item 
-        
+        parent
         
         
         ">
@@ -252,7 +252,7 @@
  
   
     
-      <li data-nav-id="/dns/authoritative/" title="Authoritative Vs Non-Authoritative " class="dd-item ">
+      <li data-nav-id="/dns/authoritative/" title="Authoritative Vs Non-Authoritative " class="dd-item active">
         <a href="/dns/authoritative/">
         Authoritative Vs Non-Authoritative 
         
@@ -378,7 +378,7 @@
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='Edit this page' href="simona.com.npCisco/OSPF%20Adjacency%20State.md" target="blank">
+                    <a class="github-link" title='Edit this page' href="simona.com.npDNS/authoritative.md" target="blank">
                       <i class="fas fa-code-branch"></i>
                       <span id="top-github-link-text">Edit this page</span>
                     </a>
@@ -409,7 +409,7 @@
             
           
           
-            <a href='/'>HOME PAGE </a> > <a href='/cisco/'>Cisco</a> > OSPF Adjacency State 
+            <a href='/'>HOME PAGE </a> > <a href='/dns/'>DNS</a> > Authoritative Vs Non-Authoritative 
           
         
           
@@ -438,66 +438,24 @@
           
             <h1>
               
-              OSPF Adjacency State 
+              Authoritative Vs Non-Authoritative 
             </h1>
           
 
         
 
 
-<p>OSPF has always been one of the most difficult dynamic routing protocols personally for me to understand if we try to deep dive into the protocol itself. In this blog let me briefly explain the different adjacency state that 2 routers go through before they exchange the route.</p>
-<ol>
-<li>
-<p>Down</p>
-<ul>
-<li>No hello has been received from the neighbors.</li>
-</ul>
-</li>
-<li>
-<p>Attempt</p>
-<ul>
-<li>Unicast hello has been sent to the neighbor router but no hello has been received back yet</li>
-</ul>
-</li>
-<li>
-<p>Init</p>
-<ul>
-<li>Received hello packet from the neighbor but the other router has not acknowledged my hello.</li>
-</ul>
-</li>
-<li>
-<p>2-WAY</p>
-<ul>
-<li>Hello packet has been exchanged and also the acknowledgment has been done.</li>
-</ul>
-</li>
-<li>
-<p>Exstart</p>
-<ul>
-<li>Master and Slave has been formed where master will always have the highest Router-ID
--Master chooses the starting sequence number for the exchange of database descriptor packets that are used for actual LSA exchange.</li>
-</ul>
-</li>
-<li>
-<p>Exchange</p>
-<ul>
-<li>Link state database is sent with the help of Database packets and describes the content of link state database.</li>
-</ul>
-</li>
-<li>
-<p>Loading</p>
-<ul>
-<li>Based on the information provided by the DBD packets routers send link state request and gets back the requested link state information in link state update packets.</li>
-</ul>
-</li>
-<li>
-<p>Full</p>
-<ul>
-<li>Neighbors are fully adjacent and databases are synchronized.</li>
-</ul>
-</li>
-</ol>
-<p><img src="/Cisco/OSPF.jpg" alt="Cisco Image"></p>
+<p><strong>What is Non-Authoritative DNS ?</strong></p>
+<p>Simply stating non-authoritative DNS does not contain the original files of the namespace zone. They usually have cache for that particular domain which is usually generated from previous iterative query done towards Root, TLD and then to the authoritative nameserver .If a DNS server responded for a DNS query which doesn’t have its original file information it is known as a Non-authoritative answer.</p>
+<p>Let&rsquo;s have a look at a simple packet capture to help it understand better.</p>
+<p><img src="/DNS/non-auth.PNG" alt="DNS Image"></p>
+<p>As you can clear see above my ip being 192.168.1.93 is querying  for resolver1.opendns.com and it is querying to get the IP for facebook.com. The resolver checks into its cache and send me the result and under response packet we can clearly see it indicating Authority RRs : 0 which means resolver1.opendns.com does not contain the file information for the domain facebook.com and is non-authoritative DNS.</p>
+<p><strong>What is Authoritative DNS ?</strong></p>
+<p>The authoritative nameserver contains information specific to the domain name it serves (e.g. google.com) and it can provide a recursive resolver with the IP address of that server found in the DNS A record, or if the domain has a CNAME record (alias) .Simply, authoritative DNS servers are responsible for the IP “mapping” of the intended website. They have the file information for that particular namespace.</p>
+<p>Let me capture a file and show you guys.
+<img src="/DNS/auth-dns.PNG" alt="DNS Image"></p>
+<p>In the above capture 10.11.14.207 is making a query for test.example.com which we can see in the first packet and the reply we get is from 10.11.14.210 which has the Resource Record for the domain test.example.com . We directly get a reply from the authoritative DNS in this case and the indication has clearly made by wireshark with marking Authority RR as  1.</p>
+<p>This can also be found out using nslookup in windows and similar command like dig in linux.</p>
 
 
 <footer class="footline">
@@ -570,62 +528,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
                 
                 
 
@@ -650,6 +552,22 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -657,6 +575,43 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -710,10 +665,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/cisco/reload/" title="Cisco-R1# reload in/at  A Life Saver ! "> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/dns/" title="DNS"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/dns/" title="DNS" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/junipe/" title="Juniper " style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>OSPF Adjacency State  :: Building Ideas</title>
+    <title>Juniper  :: Building Ideas</title>
 
     
     <link href="/css/nucleus.css?1590787613" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/cisco/ospf-adjacency-state/">
+  <body class="" data-url="/test/">
     <nav id="sidebar" class="">
 
 
@@ -150,7 +150,7 @@
   
     
     <li data-nav-id="/cisco/" title="Cisco" class="dd-item 
-        parent
+        
         
         
         ">
@@ -197,7 +197,7 @@
  
   
     
-      <li data-nav-id="/cisco/ospf-adjacency-state/" title="OSPF Adjacency State " class="dd-item active">
+      <li data-nav-id="/cisco/ospf-adjacency-state/" title="OSPF Adjacency State " class="dd-item ">
         <a href="/cisco/ospf-adjacency-state/">
         OSPF Adjacency State 
         
@@ -337,7 +337,7 @@
     
     <li data-nav-id="/test/" title="Juniper " class="dd-item 
         
-        
+        active
         
         ">
       <a href="/test/">
@@ -378,7 +378,7 @@
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='Edit this page' href="simona.com.npCisco/OSPF%20Adjacency%20State.md" target="blank">
+                    <a class="github-link" title='Edit this page' href="simona.com.nptest/_index.md" target="blank">
                       <i class="fas fa-code-branch"></i>
                       <span id="top-github-link-text">Edit this page</span>
                     </a>
@@ -405,13 +405,7 @@
             
           
           
-            
-            
-          
-          
-            <a href='/'>HOME PAGE </a> > <a href='/cisco/'>Cisco</a> > OSPF Adjacency State 
-          
-        
+            <a href='/'>HOME PAGE </a> > Juniper 
           
         
           
@@ -438,69 +432,20 @@
           
             <h1>
               
-              OSPF Adjacency State 
+              Juniper 
             </h1>
           
 
         
 
 
-<p>OSPF has always been one of the most difficult dynamic routing protocols personally for me to understand if we try to deep dive into the protocol itself. In this blog let me briefly explain the different adjacency state that 2 routers go through before they exchange the route.</p>
-<ol>
-<li>
-<p>Down</p>
-<ul>
-<li>No hello has been received from the neighbors.</li>
-</ul>
-</li>
-<li>
-<p>Attempt</p>
-<ul>
-<li>Unicast hello has been sent to the neighbor router but no hello has been received back yet</li>
-</ul>
-</li>
-<li>
-<p>Init</p>
-<ul>
-<li>Received hello packet from the neighbor but the other router has not acknowledged my hello.</li>
-</ul>
-</li>
-<li>
-<p>2-WAY</p>
-<ul>
-<li>Hello packet has been exchanged and also the acknowledgment has been done.</li>
-</ul>
-</li>
-<li>
-<p>Exstart</p>
-<ul>
-<li>Master and Slave has been formed where master will always have the highest Router-ID
--Master chooses the starting sequence number for the exchange of database descriptor packets that are used for actual LSA exchange.</li>
-</ul>
-</li>
-<li>
-<p>Exchange</p>
-<ul>
-<li>Link state database is sent with the help of Database packets and describes the content of link state database.</li>
-</ul>
-</li>
-<li>
-<p>Loading</p>
-<ul>
-<li>Based on the information provided by the DBD packets routers send link state request and gets back the requested link state information in link state update packets.</li>
-</ul>
-</li>
-<li>
-<p>Full</p>
-<ul>
-<li>Neighbors are fully adjacent and databases are synchronized.</li>
-</ul>
-</li>
-</ol>
-<p><img src="/Cisco/OSPF.jpg" alt="Cisco Image"></p>
+
+	
 
 
-<footer class="footline">
+
+
+<footer class=" footline" >
 	
 </footer>
 
@@ -570,7 +515,6 @@
             
                 
                     
-                    
                 
                 
 
@@ -583,9 +527,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -602,7 +543,6 @@
             
             
                 
-                    
                     
                 
                 
@@ -622,9 +562,6 @@
             
             
                 
-                    
-                        
-                        
                     
                 
                 
@@ -689,6 +626,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -710,10 +648,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/cisco/reload/" title="Cisco-R1# reload in/at  A Life Saver ! "> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/junipe/vc/" title="Virtual Chassis "> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/dns/" title="DNS" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/big-ip-f5/" title="Big IP F5" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -743,4 +681,3 @@
 
   </body>
 </html>
-
