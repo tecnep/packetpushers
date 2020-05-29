@@ -21,13 +21,15 @@
     </item>
     
     <item>
-      <title>DMVPN with EASE </title>
-      <link>http://simona.com.np/cisco/dmvpn/</link>
+      <title>OSPF Adjacency State </title>
+      <link>http://simona.com.np/cisco/ospf-adjacency-state/</link>
       <pubDate>Wed, 22 Apr 2020 20:39:58 +0545</pubDate>
       
-      <guid>http://simona.com.np/cisco/dmvpn/</guid>
-      <description>DMVPN OVERVIEW
-DMVPN is a CISCO IOS Software Solution for building an easy,dynamic and scalable VPN solution with the help of NHRP, multipoint GRE, routing protocols like EIGRP,OSPF. DMVPN provides full meshed connectivity with simple configuration of HUB and SPOKE. DMVPN itself is not a protocol to be noted its just a design. A static GRE tunnel between HUB and SPOKE is always possible where we do have create multiple tunnels for each SPOKE we add .</description>
+      <guid>http://simona.com.np/cisco/ospf-adjacency-state/</guid>
+      <description>OSPF has always been one of the most difficult dynamic routing protocols personally for me to understand if we try to deep dive into the protocol itself. In this blog let me briefly explain the different adjacency state that 2 routers go through before they exchange the route.
+  Down
+ No hello has been received from the neighbors.    Attempt
+ Unicast hello has been sent to the neighbor router but no hello has been received back yet    Init</description>
     </item>
     
   </channel>

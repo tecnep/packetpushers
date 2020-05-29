@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>SNAT and Auto Map :: Building Ideas</title>
+    <title>OSPF Adjacency State  :: Building Ideas</title>
 
     
     <link href="/css/nucleus.css?1590684100" rel="stylesheet">
@@ -34,7 +34,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/big-ip-f5/snat/">
+  <body class="" data-url="/cisco/ospf-adjacency-state/">
     <nav id="sidebar" class="">
 
 
@@ -95,7 +95,7 @@
   
     
     <li data-nav-id="/big-ip-f5/" title="Big IP F5" class="dd-item 
-        parent
+        
         
         
         ">
@@ -121,7 +121,7 @@
  
   
     
-      <li data-nav-id="/big-ip-f5/snat/" title="SNAT and Auto Map" class="dd-item active">
+      <li data-nav-id="/big-ip-f5/snat/" title="SNAT and Auto Map" class="dd-item ">
         <a href="/big-ip-f5/snat/">
         SNAT and Auto Map
         
@@ -150,7 +150,7 @@
   
     
     <li data-nav-id="/cisco/" title="Cisco" class="dd-item 
-        
+        parent
         
         
         ">
@@ -197,7 +197,7 @@
  
   
     
-      <li data-nav-id="/cisco/ospf-adjacency-state/" title="OSPF Adjacency State " class="dd-item ">
+      <li data-nav-id="/cisco/ospf-adjacency-state/" title="OSPF Adjacency State " class="dd-item active">
         <a href="/cisco/ospf-adjacency-state/">
         OSPF Adjacency State 
         
@@ -323,7 +323,7 @@
                   
                   
                   <div id="top-github-link">
-                    <a class="github-link" title='Edit this page' href="simona.com.npBIG-IP%20F5/SNAT.md" target="blank">
+                    <a class="github-link" title='Edit this page' href="simona.com.npCisco/OSPF%20Adjacency%20State.md" target="blank">
                       <i class="fas fa-code-branch"></i>
                       <span id="top-github-link-text">Edit this page</span>
                     </a>
@@ -354,7 +354,7 @@
             
           
           
-            <a href='/'>HOME PAGE </a> > <a href='/big-ip-f5/'>Big IP F5</a> > SNAT and Auto Map
+            <a href='/'>HOME PAGE </a> > <a href='/cisco/'>Cisco</a> > OSPF Adjacency State 
           
         
           
@@ -383,23 +383,66 @@
           
             <h1>
               
-              SNAT and Auto Map
+              OSPF Adjacency State 
             </h1>
           
 
         
 
 
-<p>This is going to be my first blog in the technology that I am starting  to love pretty much. Yes, as my topic suggests we are going to talk about an technology which all the time used to come in my mind as a loadbalancer but finally I started stating it as a Application Delivery Controller which it really is . Big IP F5 has become one of the hot topics over the years that provides intelligent traffic management, high availability of your critical applications, security, optimization and many more things. I will be talking more about Big IP F5 features in my next blog.</p>
-<p>Let me now be more specific and talk bit about what SNAT and Automap really does in Big IP F5. SNAT and Automap is all about changing the original source ip address before F5 sends the traffic towards the application server. This article will be more focused on the incoming traffic technically specifying  what we call it as a Destination NAT.</p>
-<p><img src="/F5/f5.png" alt="F5 image"></p>
-<p>Let&rsquo;s assume a client with an IP of 10.10.254.10 wants to access our web application (<a href="http://www.sushant.com.np">www.sushant.com.np</a>) which is being hosted in 3 different back end servers and resides behind the Big IP F5.  The client will firstly be initiating a traffic towards the Big IP F5 Virtual Server IP which being 192.168.1.155 in our scenario.  Inside the Virtual Server there will be pool members (172.16.1.2, 172.16.1.3, 172.16.1.4) where we have installed application for sushant.com.np . Big IP F5 will be then performing the selected load balancing algorithm and distribute the traffic accordingly to the multiple application servers . So, in order to reply the traffic back to the client the application server  will first check its local routing table and if it does not find the exact match in its routing table it will be sending the traffic towards the GW (172.16.1.1) which in our case will be the Router . This will result in Asymmetric routing and the client will simply not accept the traffic or even the stateful firewall in the client&rsquo;s end can simply drop it   as the Destination IP when the client initiated was 192.168.1.155  and the reply the client will be receiving is from different IP which being 172.16.1.2, 172.16.1.3 or can also be 172.16.1.4 (according to the load balancing algorithm).</p>
-<p>F5 have created a work around for this kind of issue . The first solution would simply be using the F5 as a gateway and forwarding the traffic accordingly to the routers.  The other solution to this problem is SNAT and Automap which simply changes the Source IP address and avoids asymmetric routing to happen. I will only be talking about SNAT and automap in this article so I will be writing another blog for F5 being used as a gateway.</p>
-<p>So how does SNAT work?
-For every incoming request from the client towards  F5 Virtual IP, SNAT simply changes the original source IP (10.10.254.10) of the client to Internal Self IP (172.16.1.155)  and forwards the packet to the application server. The application server will then simply reply back to the Internal Self IP and there won&rsquo;t be any  issues. Automap is similar to SNAT and simply selects the internal Self IP automatically. So it may come in your mind what is the difference between Automap and SNAT ?  SNAT can use a pool of address whereas automap simply takes the Internal Self IP which can lead to port exhaustion as one IP can only allow around 65,000 connection at a single time.</p>
-<p>Let me simply put down all the request and response IP , port in a table which will make my above statement more clearer and easier to understand.</p>
-<p>This is more of a use when the application server  wants to make use of internet for downloading some patch or some application then in this scenario they will be directly forwarding the packets towards the router and then the router to the internet . The traffic will simply not go through the F5 as the BIG IP F5 is mainly used for incoming traffic processing for our mission critical applications residing behind it. The use of SNAT, Automap and F5 being the gateway all depends upon the scenario and requirements of the client. This blog is getting too long I will be writing more about F5 in the coming days. Please, do comment if you have any queries as well as suggestion will be well appreciated.</p>
-<p>Thanks !</p>
+<p>OSPF has always been one of the most difficult dynamic routing protocols personally for me to understand if we try to deep dive into the protocol itself. In this blog let me briefly explain the different adjacency state that 2 routers go through before they exchange the route.</p>
+<ol>
+<li>
+<p>Down</p>
+<ul>
+<li>No hello has been received from the neighbors.</li>
+</ul>
+</li>
+<li>
+<p>Attempt</p>
+<ul>
+<li>Unicast hello has been sent to the neighbor router but no hello has been received back yet</li>
+</ul>
+</li>
+<li>
+<p>Init</p>
+<ul>
+<li>Received hello packet from the neighbor but the other router has not acknowledged my hello.</li>
+</ul>
+</li>
+<li>
+<p>2-WAY</p>
+<ul>
+<li>Hello packet has been exchanged and also the acknowledgment has been done.</li>
+</ul>
+</li>
+<li>
+<p>Exstart</p>
+<ul>
+<li>Master and Slave has been formed where master will always have the highest Router-ID
+-Master chooses the starting sequence number for the exchange of database descriptor packets that are used for actual LSA exchange.</li>
+</ul>
+</li>
+<li>
+<p>Exchange</p>
+<ul>
+<li>Link state database is sent with the help of Database packets and describes the content of link state database.</li>
+</ul>
+</li>
+<li>
+<p>Loading</p>
+<ul>
+<li>Based on the information provided by the DBD packets routers send link state request and gets back the requested link state information in link state update packets.</li>
+</ul>
+</li>
+<li>
+<p>Full</p>
+<ul>
+<li>Neighbors are fully adjacent and databases are synchronized.</li>
+</ul>
+</li>
+</ol>
+<p><img src="/Cisco/OSPF.jpg" alt="Cisco Image"></p>
 
 
 <footer class="footline">
@@ -437,6 +480,8 @@ For every incoming request from the client towards  F5 Virtual IP, SNAT simply c
             
                 
                     
+                        
+                        
                     
                 
                 
@@ -445,6 +490,58 @@ For every incoming request from the client towards  F5 Virtual IP, SNAT simply c
                     
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
                         
             
@@ -473,54 +570,6 @@ For every incoming request from the client towards  F5 Virtual IP, SNAT simply c
                     
                         
                         
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -574,10 +623,10 @@ For every incoming request from the client towards  F5 Virtual IP, SNAT simply c
 	 
 	 
 		
-			<a class="nav nav-prev" href="/big-ip-f5/" title="Big IP F5"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/cisco/reload/" title="Cisco-R1# reload in/at  A Life Saver ! "> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/cisco/" title="Cisco" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/dns/" title="DNS" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

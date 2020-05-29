@@ -18,7 +18,7 @@
   </url>
   
   <url>
-    <loc>http://simona.com.np/cisco/dmvpn/</loc>
+    <loc>http://simona.com.np/dns/</loc>
     <lastmod>2020-04-22T20:39:58+05:45</lastmod>
   </url>
   
@@ -29,6 +29,11 @@
   
   <url>
     <loc>http://simona.com.np/junipe/</loc>
+    <lastmod>2020-04-22T20:39:58+05:45</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://simona.com.np/cisco/ospf-adjacency-state/</loc>
     <lastmod>2020-04-22T20:39:58+05:45</lastmod>
   </url>
   
