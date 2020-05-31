@@ -12,19 +12,19 @@
     <title>SNAT and Auto Map :: Building Ideas</title>
 
     
-    <link href="/css/nucleus.css?1590788092" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1590788092" rel="stylesheet">
-    <link href="/css/hybrid.css?1590788092" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1590788092" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1590788092" rel="stylesheet">
-    <link href="/css/auto-complete.css?1590788092" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1590788092" rel="stylesheet">
-    <link href="/css/theme.css?1590788092" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1590788092" rel="stylesheet">
+    <link href="/css/nucleus.css?1590947005" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1590947005" rel="stylesheet">
+    <link href="/css/hybrid.css?1590947005" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1590947005" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1590947005" rel="stylesheet">
+    <link href="/css/auto-complete.css?1590947005" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1590947005" rel="stylesheet">
+    <link href="/css/theme.css?1590947005" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1590947005" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1590788092"></script>
+    <script src="/js/jquery-3.3.1.min.js?1590947005"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -69,14 +69,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1590788092"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1590788092"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1590947005"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1590947005"></script>
 <script type="text/javascript">
     
         var baseurl = "http:\/\/simona.com.np\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1590788092"></script>
+<script type="text/javascript" src="/js/search.js?1590947005"></script>
 
     
   </div>
@@ -424,6 +424,7 @@
 <p>This is going to be my first blog in the technology that I am starting  to love pretty much. Yes, as my topic suggests we are going to talk about an technology which all the time used to come in my mind as a loadbalancer but finally I started stating it as a Application Delivery Controller which it really is . Big IP F5 has become one of the hot topics over the years that provides intelligent traffic management, high availability of your critical applications, security, optimization and many more things. I will be talking more about Big IP F5 features in my next blog.</p>
 <p>Let me now be more specific and talk bit about what SNAT and Automap really does in Big IP F5. SNAT and Automap is all about changing the original source ip address before F5 sends the traffic towards the application server. This article will be more focused on the incoming traffic technically specifying  what we call it as a Destination NAT.</p>
 <p><img src="/F5/f5.png" alt="F5 image"></p>
+<p><img src="/DNS/image.JPG" alt="DNS image"></p>
 <p>Let&rsquo;s assume a client with an IP of 10.10.254.10 wants to access our web application (<a href="http://www.sushant.com.np">www.sushant.com.np</a>) which is being hosted in 3 different back end servers and resides behind the Big IP F5.  The client will firstly be initiating a traffic towards the Big IP F5 Virtual Server IP which being 192.168.1.155 in our scenario.  Inside the Virtual Server there will be pool members (172.16.1.2, 172.16.1.3, 172.16.1.4) where we have installed application for sushant.com.np . Big IP F5 will be then performing the selected load balancing algorithm and distribute the traffic accordingly to the multiple application servers . So, in order to reply the traffic back to the client the application server  will first check its local routing table and if it does not find the exact match in its routing table it will be sending the traffic towards the GW (172.16.1.1) which in our case will be the Router . This will result in Asymmetric routing and the client will simply not accept the traffic or even the stateful firewall in the client&rsquo;s end can simply drop it   as the Destination IP when the client initiated was 192.168.1.155  and the reply the client will be receiving is from different IP which being 172.16.1.2, 172.16.1.3 or can also be 172.16.1.4 (according to the load balancing algorithm).</p>
 <p>F5 have created a work around for this kind of issue . The first solution would simply be using the F5 as a gateway and forwarding the traffic accordingly to the routers.  The other solution to this problem is SNAT and Automap which simply changes the Source IP address and avoids asymmetric routing to happen. I will only be talking about SNAT and automap in this article so I will be writing another blog for F5 being used as a gateway.</p>
 <p>So how does SNAT work?
@@ -634,19 +635,19 @@ For every incoming request from the client towards  F5 Virtual IP, SNAT simply c
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1590788092"></script>
-    <script src="/js/perfect-scrollbar.min.js?1590788092"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1590788092"></script>
-    <script src="/js/jquery.sticky.js?1590788092"></script>
-    <script src="/js/featherlight.min.js?1590788092"></script>
-    <script src="/js/highlight.pack.js?1590788092"></script>
+    <script src="/js/clipboard.min.js?1590947005"></script>
+    <script src="/js/perfect-scrollbar.min.js?1590947005"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1590947005"></script>
+    <script src="/js/jquery.sticky.js?1590947005"></script>
+    <script src="/js/featherlight.min.js?1590947005"></script>
+    <script src="/js/highlight.pack.js?1590947005"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1590788092"></script>
-    <script src="/js/learn.js?1590788092"></script>
-    <script src="/js/hugo-learn.js?1590788092"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1590947005"></script>
+    <script src="/js/learn.js?1590947005"></script>
+    <script src="/js/hugo-learn.js?1590947005"></script>
 
-    <link href="/mermaid/mermaid.css?1590788092" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1590788092"></script>
+    <link href="/mermaid/mermaid.css?1590947005" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1590947005"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
